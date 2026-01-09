@@ -2,7 +2,7 @@
 Generate both cover letter and resume endpoint
 """
 
-from http.server import BaseHTTPRequestHandleri
+from http.server import BaseHTTPRequestHandler
 import json
 import os
 import cgi
