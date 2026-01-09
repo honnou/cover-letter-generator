@@ -82,7 +82,7 @@ Please output ONLY the new cover letter text, without any preamble or explanatio
             # Initialize client here, not at module level
             client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
             message = client.messages.create(
-                model="claude-3-5-sonnet-20240620",
+                model="claude-3-5-sonnet-latest",
                 max_tokens=2000,
                 messages=[
                     {"role": "user", "content": prompt}
