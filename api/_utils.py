@@ -20,16 +20,6 @@ AI_PROVIDER = os.getenv('AI_PROVIDER', 'anthropic')
 ANTHROPIC_API_KEY = os.getenv('ANTHROPIC_API_KEY', '')
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY', '')
 
-# Initialize AI clients
-anthropic_client = None
-openai_client = None
-
-if ANTHROPIC_API_KEY:
-    anthropic_client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
-if OPENAI_API_KEY:
-    openai.api_key = OPENAI_API_KEY
-    openai_client = openai
-
 
 def extract_text_from_pdf(file_stream):
     """Extract text from PDF file"""
@@ -88,8 +78,10 @@ Please create a new cover letter for the new job that:
 Please output ONLY the new cover letter text, without any preamble or explanation."""
 
     try:
-        if ai_provider == 'anthropic' and anthropic_client:
-            message = anthropic_client.messages.create(
+        if ai_provider == 'anthropic' and ANTHROPIC_API_KEY:
+            # Initialize client here, not at module level
+            client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+            message = client.messages.create(
                 model="claude-3-5-sonnet-20241022",
                 max_tokens=2000,
                 messages=[
@@ -98,8 +90,10 @@ Please output ONLY the new cover letter text, without any preamble or explanatio
             )
             return message.content[0].text
 
-        elif ai_provider == 'openai' and openai_client:
-            response = openai_client.chat.completions.create(
+        elif ai_provider == 'openai' and OPENAI_API_KEY:
+            # Initialize OpenAI client here
+            openai.api_key = OPENAI_API_KEY
+            response = openai.chat.completions.create(
                 model="gpt-4",
                 messages=[
                     {"role": "system", "content": "You are a professional career advisor helping to write cover letters."},
