@@ -5,6 +5,6 @@ python-docx==1.1.0
 # Document Generation
 reportlab==4.0.7
 
-# AI Integration
-anthropic==0.39.0
+# AI Integration - Updated versions
+anthropic==0.40.0
 openai==1.54.0
