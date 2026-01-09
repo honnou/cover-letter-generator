@@ -12,7 +12,7 @@ import sys
 # Add parent directory to path to import _utils
 sys.path.insert(0, os.path.dirname(__file__))
 
-from _utils import extract_text_from_file, generate_cover_letter_with_ai
+from ._utils import extract_text_from_file, generate_cover_letter_with_ai
 
 
 class handler(BaseHTTPRequestHandler):
