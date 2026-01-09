@@ -7,7 +7,7 @@ import json
 import os
 import cgi
 import io
-from _utils import extract_text_from_file, generate_cover_letter_with_ai
+from ._utils import extract_text_from_file, generate_cover_letter_with_ai
 
 
 class handler(BaseHTTPRequestHandler):
