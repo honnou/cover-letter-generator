@@ -1,0 +1,18 @@
+# Web Framework
+flask==3.0.0
+flask-cors==4.0.0
+
+# Document Parsing
+PyPDF2==3.0.1
+python-docx==1.1.0
+markdown2==2.4.12
+
+# Document Generation
+reportlab==4.0.7
+
+# AI Integration
+anthropic==0.39.0
+openai==1.54.0
+
+# Utilities
+python-dotenv==1.0.0
